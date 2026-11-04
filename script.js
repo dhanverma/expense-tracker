@@ -9,6 +9,8 @@ const submitBtn = document.getElementById('submit-btn');
 const typeInput = document.getElementById('type');
 const categoryInput = document.getElementById('category');
 const dateInput = document.getElementById('date');
+const cancelEditBtn = document.getElementById('cancel-edit-btn');
+const categoryFilter = document.getElementById('category-filter');
 
 
 const storedTransactions = localStorage.getItem('expense-transactions');
@@ -25,6 +27,7 @@ form.addEventListener('submit', function (e) {
     const type = typeInput.value;
     const category = categoryInput.value;
     const date = dateInput.value;
+    if (description === '' || !Number.isFinite(amount) || amount <= 0) return
     const transaction = {
         id: Date.now(),
         description,
@@ -53,10 +56,20 @@ form.addEventListener('submit', function (e) {
     form.reset();
 });
 
-const renderTransactions = () => {
+const renderTransactions = (filteredTransactions = transactions) => {
     transList.innerHTML = '';
 
-    transactions.forEach(transaction => {
+    const sortedTransactions = filteredTransactions.slice().sort((a, b) => {
+        return b.date.localeCompare(a.date);
+    });
+    if (sortedTransactions.length === 0) {
+        const msg = document.createElement('p')
+        msg.textContent = 'No transactions found. Add your first transaction!'
+        msg.classList.add('empty-msg')
+        transList.appendChild(msg)
+        return;
+    };
+    sortedTransactions.forEach(transaction => {
         const li = document.createElement('li');
         li.classList.add('transaction-item');
 
@@ -69,7 +82,7 @@ const renderTransactions = () => {
         })
 
         const details = document.createElement('span');
-        details.textContent = `${transaction.date} - ${transaction.description} - ${transaction.category} - $${transaction.amount.toFixed(2)} (${transaction.type})`;
+        details.textContent = `${transaction.date} - ${transaction.description} - ${transaction.category} - ₹${transaction.amount.toFixed(2)} (${transaction.type})`;
 
         const deleteBtn = document.createElement('button');
         deleteBtn.textContent = 'Delete';
@@ -97,17 +110,35 @@ const editTransaction = (id) => {
         categoryInput.value = transaction.category;
         dateInput.value = transaction.date;
         editingTransactionId = id;
-        submitBtn.textContent = 'Update Transaction';
+        cancelEditBtn.style.display = 'block';
+        submitBtn.textContent = 'Update';
+
     }
 };
 
+categoryFilter.addEventListener('change', () => {
+    const filteredTransactions = transactions.filter((t) => {
+        return categoryFilter.value === 'All Categories' ||
+            categoryFilter.value === t.category;
+    })
+
+    renderTransactions(filteredTransactions);
+})
+
+cancelEditBtn.addEventListener('click', () => {
+    form.reset();
+    editingTransactionId = null;
+    submitBtn.textContent = 'Add Transaction'
+    cancelEditBtn.style.display = 'none'
+});
+
 const updateSummary = () => {
     const totalIncome = transactions.filter(t => t.type === 'income').reduce((acc, t) => acc + t.amount, 0).toFixed(2);
-    incomeAmt.textContent = `$${totalIncome}`;
+    incomeAmt.textContent = `₹${totalIncome}`;
     const totalExpense = transactions.filter(t => t.type === 'expense').reduce((acc, t) => acc + t.amount, 0).toFixed(2);
-    expenseAmt.textContent = `$${totalExpense}`;
+    expenseAmt.textContent = `₹${totalExpense}`;
     const balance = (parseFloat(totalIncome) - parseFloat(totalExpense)).toFixed(2);
-    balanceAmt.textContent = `$${balance}`;
+    balanceAmt.textContent = `₹${balance}`;
 }
 
 const deleteTransaction = (id) => {

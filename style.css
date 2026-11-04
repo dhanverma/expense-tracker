@@ -70,10 +70,18 @@ body {
     gap: 15px;
 }
 
-.title{ 
+.title {
     font-weight: 900;
     padding: 0 10px;
     margin-bottom: 20px;
+}
+
+.card p {
+    font-size: 10px;
+}
+
+.card h5 {
+    font-size: 16px;
 }
 
 .card {
@@ -149,12 +157,18 @@ main {
     padding: 20px 5px;
 }
 
+.formBtns {
+    display: flex;
+    gap: 8px;
+}
+
 #submit-btn {
     padding: 10px 20px;
     border-radius: 20px;
     border: none;
+    width: 100%;
     margin-top: 10px;
-    background-color: #4007c5d7;
+    background-color: rgba(64, 7, 197, 0.843);
     color: white;
     font-weight: 900;
     cursor: pointer;
@@ -163,7 +177,7 @@ main {
 .transaction-list {
     flex: 1.5;
     min-width: 0;
-    height: 570px; 
+    height: 570px;
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -174,14 +188,48 @@ main {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     position: relative;
 }
+
+.empty-msg {
+    text-align: center;
+    color: #888;
+    padding: 30px 10px;
+    font-size: 15px;
+}
+
+#cancel-edit-btn {
+    display: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    width: 100%;
+    background-color: rgb(255, 0, 0, 0.3);
+    color: red;
+    margin-top: 10px;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.transaction-actions {
+    display: flex;
+    gap: 5px;
+}
+
 .edit-btn {
     background-color: #eeeeee;
     color: #333;
+    font-weight: 700;
+    padding: 5px 10px;
+    border-radius: 20px;
+    border: none;
 }
 
 .delete-btn {
-    background-color: #ff3333;
-    color: white;
+    background-color: rgb(255, 0, 0, 0.3);
+    color: red;
+    font-weight: 700;
+    padding: 5px 10px;
+    border-radius: 20px;
+    border: none;
 }
 
 .edit-btn:hover {
@@ -189,7 +237,13 @@ main {
 }
 
 .delete-btn:hover {
-    background-color: #c90000;
+    background-color: #c900006e;
+}
+
+#category-filter {
+    padding: 5px 10px;
+    border-radius: 20px;
+    margin-top: 5px;
 }
 
 .transaction-item {
@@ -200,8 +254,9 @@ main {
     padding: 10px 0;
     padding-left: 30px;
     border-bottom: 1px solid #e0e0e0;
-    gap:15px;
+    gap: 15px;
 }
+
 #transactions {
     flex: 1;
     min-height: 0;
@@ -209,6 +264,7 @@ main {
     overflow-x: hidden;
     padding-right: 8px;
 }
+
 #transactions::-webkit-scrollbar {
     width: 6px;
 }
@@ -232,8 +288,21 @@ main {
         padding: 12px;
     }
 
+    .cardBox {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
     .card {
         width: 100%;
+        min-width: 0;
+        padding: 12px;
+        border-radius: 12px;
+    }
+
+    .card:nth-child(3) {
+        grid-column: span 2;
     }
 
     main {
@@ -247,6 +316,10 @@ main {
         width: 100%;
         min-width: 0;
         margin: 0;
+    }
+
+    #transaction-form{
+        padding: 20px;
     }
 
     .transaction-list {
