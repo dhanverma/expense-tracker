@@ -1,0 +1,268 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    font-family: Arial, sans-serif;
+    color: #000000c0;
+    position: relative;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 200px;
+    color: green;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.sidebar {
+    width: 230px;
+    height: 100vh;
+    padding: 15px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.navigation {
+    padding: 10px;
+    display: flex;
+    gap: 8px;
+
+}
+
+.sideBtns {
+    width: 200px;
+}
+
+.navigation:hover {
+    background-color: #07c517b7;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.log {
+    margin-top: auto;
+}
+
+.mainPage {
+    min-width: 0;
+    flex: 1;
+    height: 100vh;
+    margin-left: 230px;
+    background-color: #e6e5e5;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.cardBox {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.title{ 
+    font-weight: 900;
+    padding: 0 10px;
+    margin-bottom: 20px;
+}
+
+.card {
+    flex: 1 1 200px;
+    min-width: 0;
+    background-color: #ffffff;
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    font-weight: 900;
+    font-size: 20px;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+
+
+}
+
+#income-amount {
+    color: rgb(0, 163, 0);
+    font-size: 30px;
+}
+
+#expense-amount {
+    color: red;
+    font-size: 30px;
+}
+
+#balance-amount {
+    color: #0747f8;
+    font-size: 30px;
+}
+
+.transaction-form {
+    padding: 20px;
+    border-radius: 20px;
+    background-color: #ffffff;
+    flex: 1;
+    min-width: 280px;
+    align-self: flex-start;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+#transaction-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 10px;
+    gap: 12px;
+}
+
+.inputs {
+    padding: 15px 10px;
+    border-radius: 5px;
+    border: none;
+    width: 100%;
+    background-color: #f3f4f6;
+    font: inherit;
+    outline: none;
+}
+
+.inputs:focus {
+    outline: 2px solid #4007c5;
+    background-color: #fff;
+}
+
+main {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px 5px;
+}
+
+#submit-btn {
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    margin-top: 10px;
+    background-color: #4007c5d7;
+    color: white;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.transaction-list {
+    flex: 1.5;
+    min-width: 0;
+    height: 570px; 
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    width: 100%;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+.edit-btn {
+    background-color: #eeeeee;
+    color: #333;
+}
+
+.delete-btn {
+    background-color: #ff3333;
+    color: white;
+}
+
+.edit-btn:hover {
+    background-color: #d8d8d8;
+}
+
+.delete-btn:hover {
+    background-color: #c90000;
+}
+
+.transaction-item {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    padding-left: 30px;
+    border-bottom: 1px solid #e0e0e0;
+    gap:15px;
+}
+#transactions {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 8px;
+}
+#transactions::-webkit-scrollbar {
+    width: 6px;
+}
+
+#transactions::-webkit-scrollbar-thumb {
+    background: #c5c5c5;
+    border-radius: 10px;
+}
+
+#transactions::-webkit-scrollbar-thumb:hover {
+    background: #999;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        display: none;
+    }
+
+    .mainPage {
+        margin-left: 0;
+        padding: 12px;
+    }
+
+    .card {
+        width: 100%;
+    }
+
+    main {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 10px 0;
+    }
+
+    .transaction-form,
+    .transaction-list {
+        width: 100%;
+        min-width: 0;
+        margin: 0;
+    }
+
+    .transaction-list {
+        height: 450px;
+        flex: none;
+    }
+
+    .transaction-item {
+        flex-wrap: wrap;
+    }
+
+    .transaction-item span {
+        flex-basis: 100%;
+    }
+
+    .transaction-actions {
+        margin-left: auto;
+    }
+}
