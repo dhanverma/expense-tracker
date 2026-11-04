@@ -11,6 +11,9 @@ const categoryInput = document.getElementById('category');
 const dateInput = document.getElementById('date');
 const cancelEditBtn = document.getElementById('cancel-edit-btn');
 const categoryFilter = document.getElementById('category-filter');
+const sidebar = document.querySelector('.sidebar');
+const menuBtn = document.querySelector('.menuBtn');
+const closeBtn = document.getElementById('closeBtn');
 
 
 const storedTransactions = localStorage.getItem('expense-transactions');
@@ -152,3 +155,23 @@ const deleteTransaction = (id) => {
 }
 renderTransactions();
 updateSummary();
+
+menuBtn.addEventListener('click', () => {
+    sidebar.classList.add('active');
+});
+
+closeBtn.addEventListener('click', () => {
+    sidebar.classList.remove('active');
+});
+
+const navigationItems = document.querySelectorAll('.navigation');
+
+navigationItems.forEach(item => {
+    item.addEventListener('click', () => {
+        navigationItems.forEach(nav => {
+            nav.classList.remove('active');
+        });
+
+        item.classList.add('active');
+    });
+});
