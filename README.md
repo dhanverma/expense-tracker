@@ -2,6 +2,8 @@
 
 A responsive Expense Tracker web application built using HTML, CSS, and Vanilla JavaScript. It helps users manage their income and expenses while keeping track of their overall balance.
 
+## 🚀 Live Demo: https://expense-tracker-theta-five-26me8nlh6t.vercel.app
+
 ## ✨ Features
 
 - Add income and expense transactions

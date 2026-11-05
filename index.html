@@ -25,20 +25,16 @@
             <span>Expense Tracker</span>
         </div>
         <div class="sideBtns">
-            <div class="navigation active">
-                <span class="material-symbols-outlined">
-                    dashboard
-                </span>
-                <span> Dashboard</span>
-            </div>
+            <a href="index.html" class="navigation active">
+                <span class="material-symbols-outlined">dashboard</span>
+                <span>Dashboard</span>
+            </a>
         </div>
         <div class="sideBtns">
-            <div class="navigation">
-                <span class="material-symbols-outlined">
-                    receipt_long
-                </span>
+            <a href="transactions.html" class="navigation">
+                <span class="material-symbols-outlined">receipt_long</span>
                 <span>Transaction</span>
-            </div>
+            </a>
         </div>
         <div class="sideBtns">
             <div class="navigation">
@@ -83,12 +79,28 @@
             </div>
         </div>
     </div>
+    <div class="overlay"></div>
     <div class="mainPage">
         <header>
-            <button class="menuBtn">
-                <span class="material-symbols-outlined">
-                    menu
-                </span></button>
+            <div>
+                <button class="headBtn menuBtn">
+                    <span class="material-symbols-outlined">
+                        menu
+                    </span>
+                </button>
+            </div>
+            <div class="cnrBtn">
+                <button class="headBtn searchBtn">
+                    <span class="material-symbols-outlined">
+                        search
+                    </span>
+                </button>
+                <button class="headBtn">
+                    <span class="material-symbols-outlined">
+                        notifications
+                    </span>
+                </button>
+            </div>
         </header>
         <nav>
             <div class="title">
@@ -138,10 +150,11 @@
                         <option value="Sports">Sports</option>
                         <option value="Toiletry">Toiletry</option>
                         <option value="Bills">Bills</option>
+                        <option value="Bills">Salary</option>
                         <option value="Transport">Transport</option>
                     </select>
                     <hr>
-                    <input class="inputs" type="date" id="date" name="date" required />
+                    <input class="inputs" type="date" id="date" name="date" max="today" required />
                     <hr>
                     <div class="formBtns">
                         <button type="button" id="cancel-edit-btn">Cancel</button>
@@ -151,7 +164,7 @@
             </div>
 
             <div class="transaction-list">
-                <h3>Transaction History</h3>
+                <h3>Recent Transactions</h3>
                 <div class="category-filter">
                     <select id="category-filter" name="category">
                         <option value="All Categories">All Categories</option>
@@ -164,6 +177,7 @@
                         <option value="Sports">Sports</option>
                         <option value="Toiletry">Toiletry</option>
                         <option value="Bills">Bills</option>
+                        <option value="Bills">Salary</option>
                         <option value="Transport">Transport</option>
                     </select>
                 </div>

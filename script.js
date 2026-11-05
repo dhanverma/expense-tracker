@@ -13,15 +13,66 @@ const cancelEditBtn = document.getElementById('cancel-edit-btn');
 const categoryFilter = document.getElementById('category-filter');
 const sidebar = document.querySelector('.sidebar');
 const menuBtn = document.querySelector('.menuBtn');
+const searchBtn = document.querySelector('.searchBtn');
 const closeBtn = document.getElementById('closeBtn');
+const navigationItems = document.querySelectorAll('.navigation');
+const cnrBtn = document.querySelector('.cnrBtn')
 
+const sampleTransactions = [
+    {
+        id: 1,
+        description: "Monthly Salary",
+        amount: 25000,
+        type: "income",
+        category: "Salary",
+        date: "2026-11-01"
+    },
+    {
+        id: 2,
+        description: "Grocery Shopping",
+        amount: 1800,
+        type: "expense",
+        category: "Food",
+        date: "2026-11-02"
+    },
+    {
+        id: 3,
+        description: "Freelance Website",
+        amount: 5000,
+        type: "income",
+        category: "Freelance",
+        date: "2026-11-03"
+    },
+    {
+        id: 4,
+        description: "Electricity Bill",
+        amount: 1200,
+        type: "expense",
+        category: "Bills",
+        date: "2026-11-04"
+    },
+    {
+        id: 5,
+        description: "Movie Tickets",
+        amount: 600,
+        type: "expense",
+        category: "Entertainment",
+        date: "2026-11-05"
+    }
+];
 
 const storedTransactions = localStorage.getItem('expense-transactions');
-let editingTransactionId = null;
 
 const transactions = storedTransactions
     ? JSON.parse(storedTransactions)
-    : [];
+    : sampleTransactions;
+
+if (!storedTransactions) {
+    localStorage.setItem(
+        'expense-transactions',
+        JSON.stringify(sampleTransactions)
+    );
+}
 
 form.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -39,6 +90,7 @@ form.addEventListener('submit', function (e) {
         category,
         date
     };
+
 
     if (editingTransactionId !== null) {
         const obj = transactions.find(t => t.id === editingTransactionId)
@@ -59,6 +111,10 @@ form.addEventListener('submit', function (e) {
     form.reset();
 });
 
+const today = new Date().toISOString().split('T')[0];
+dateInput.value = today;
+dateInput.max = today;
+
 const renderTransactions = (filteredTransactions = transactions) => {
     transList.innerHTML = '';
 
@@ -75,12 +131,8 @@ const renderTransactions = (filteredTransactions = transactions) => {
     sortedTransactions.forEach(transaction => {
         const li = document.createElement('li');
         li.classList.add('transaction-item');
-
-        const editBtn = document.createElement('button');
-        editBtn.textContent = 'Edit';
-        editBtn.classList.add('edit-btn');
-
-        editBtn.addEventListener('click', () => {
+        
+        li.addEventListener('click', () => {
             editTransaction(transaction.id);
         })
 
@@ -95,11 +147,7 @@ const renderTransactions = (filteredTransactions = transactions) => {
             deleteTransaction(transaction.id);
         });
 
-        const actions = document.createElement('div');
-        actions.classList.add('transaction-actions');
-
-        actions.append(editBtn, deleteBtn);
-        li.append(details, actions);
+        li.append(details, deleteBtn);
         transList.appendChild(li);
     });
 };
@@ -119,14 +167,40 @@ const editTransaction = (id) => {
     }
 };
 
-categoryFilter.addEventListener('change', () => {
+const applyFilters = () => {
     const filteredTransactions = transactions.filter((t) => {
-        return categoryFilter.value === 'All Categories' ||
+        const matchesSearch = t.description.toLowerCase().includes(search.toLowerCase());
+        const matchesCategory = categoryFilter.value === "All Categories" ||
             categoryFilter.value === t.category;
-    })
 
+        return matchesSearch && matchesCategory;
+    })
     renderTransactions(filteredTransactions);
+}
+
+let search = '';
+
+searchBtn.addEventListener('click', () => {
+
+    let searchInp = document.querySelector('.searchInp');
+
+    if (!searchInp) {
+        const searchInp = document.createElement('input');
+        searchInp.classList.add('searchInp');
+        searchInp.placeholder = 'Search transactions...';
+
+        cnrBtn.prepend(searchInp);
+
+        searchInp.addEventListener('input', () => {
+            search = searchInp.value.trim().toLowerCase();
+            applyFilters();
+        })
+    } else {
+        searchInp.focus();
+    }
 })
+
+categoryFilter.addEventListener('change', applyFilters);
 
 cancelEditBtn.addEventListener('click', () => {
     form.reset();
@@ -145,6 +219,10 @@ const updateSummary = () => {
 }
 
 const deleteTransaction = (id) => {
+    const confirmDelete = confirm('Are you sure you want to delete this transaction?')
+
+    if (!confirmDelete) return;
+
     const index = transactions.findIndex(t => t.id === id);
     if (index !== -1) {
         transactions.splice(index, 1);
@@ -156,22 +234,19 @@ const deleteTransaction = (id) => {
 renderTransactions();
 updateSummary();
 
+const overlay = document.querySelector('.overlay');
+
+overlay.addEventListener('click', () => {
+    sidebar.classList.remove('active');
+    overlay.classList.remove('active');
+})
+
 menuBtn.addEventListener('click', () => {
     sidebar.classList.add('active');
+    overlay.classList.add('active');
 });
 
 closeBtn.addEventListener('click', () => {
     sidebar.classList.remove('active');
-});
-
-const navigationItems = document.querySelectorAll('.navigation');
-
-navigationItems.forEach(item => {
-    item.addEventListener('click', () => {
-        navigationItems.forEach(nav => {
-            nav.classList.remove('active');
-        });
-
-        item.classList.add('active');
-    });
+    overlay.classList.remove('active');
 });
