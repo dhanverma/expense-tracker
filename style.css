@@ -111,6 +111,17 @@ header {
     background-color: #e6e5e5;
 }
 
+.cnrBtn{
+    display: flex;
+    align-items: center;
+}
+
+.searchInp{
+    padding: 8px 10px;
+    border-radius: 10px;
+    border: 1px solid gray;
+}
+
 .cardBox {
     width: 100%;
     display: flex;

@@ -62,6 +62,7 @@ const sampleTransactions = [
 ];
 
 const storedTransactions = localStorage.getItem('expense-transactions');
+let editingTransactionId = null;
 
 const transactions = storedTransactions
     ? JSON.parse(storedTransactions)
