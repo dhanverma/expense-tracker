@@ -84,7 +84,7 @@ body {
     height: 100vh;
     margin-left: 230px;
     background-color: #e6e5e5;
-    padding: 20px;
+    padding: 8px 20px;
     overflow-y: auto;
 }
 
@@ -137,48 +137,40 @@ header {
 
 .title p {
     font-weight: 400;
-    padding: 5px;
-}
-
-.card p {
-    font-size: 10px;
+    padding-bottom: 5px;
 }
 
 .card h5 {
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .card {
     flex: 1 1 200px;
     min-width: 0;
     background-color: #ffffff;
-    margin: 5px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 10px;
     font-weight: 900;
-    font-size: 20px;
-    padding: 25px;
+    font-size: 18px;
+    padding: 15px 20px;
     border-radius: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-
-
 }
 
 #income-amount {
     color: rgb(0, 163, 0);
-    font-size: 30px;
+    font-size: 25px;
 }
 
 #expense-amount {
     color: red;
-    font-size: 30px;
+    font-size: 25px;
 }
 
 #balance-amount {
     color: #0747f8;
-    font-size: 30px;
+    font-size: 25px;
 }
 
 .transaction-form {
@@ -196,11 +188,11 @@ header {
     flex-direction: column;
     width: 100%;
     margin-top: 10px;
-    gap: 12px;
+    gap: 10px;
 }
 
 .inputs {
-    padding: 15px 10px;
+    padding: 10px 10px;
     border-radius: 5px;
     border: none;
     width: 100%;
@@ -227,7 +219,7 @@ main {
 }
 
 #submit-btn {
-    padding: 10px 20px;
+    padding: 10px;
     border-radius: 20px;
     border: none;
     width: 100%;
@@ -241,7 +233,7 @@ main {
 .transaction-list {
     flex: 1.5;
     min-width: 0;
-    max-height: 570px;
+    max-height: 422px;
     display: flex;
     flex-direction: column;
     overflow: hidden;

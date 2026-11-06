@@ -102,6 +102,7 @@ form.addEventListener('submit', function (e) {
         obj.date = date;
         editingTransactionId = null;
         submitBtn.textContent = 'Add Transaction';
+        cancelEditBtn.style.display = 'none';
     }
     else { transactions.push(transaction); }
 
@@ -132,7 +133,7 @@ const renderTransactions = (filteredTransactions = transactions) => {
     sortedTransactions.forEach(transaction => {
         const li = document.createElement('li');
         li.classList.add('transaction-item');
-        
+
         li.addEventListener('click', () => {
             editTransaction(transaction.id);
         })
@@ -144,7 +145,8 @@ const renderTransactions = (filteredTransactions = transactions) => {
         deleteBtn.textContent = 'Delete';
         deleteBtn.classList.add('delete-btn');
 
-        deleteBtn.addEventListener('click', () => {
+        deleteBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
             deleteTransaction(transaction.id);
         });
 
@@ -201,13 +203,26 @@ searchBtn.addEventListener('click', () => {
     }
 })
 
+document.addEventListener('click', (e) => {
+    const searchInp = document.querySelector('.searchInp');
+
+    if (!searchInp) return;
+
+    if (!searchInp.contains(e.target) &&
+        !searchBtn.contains(e.target)) {
+        searchInp.remove();
+        search = '';
+        applyFilters();
+    }
+})
+
 categoryFilter.addEventListener('change', applyFilters);
 
 cancelEditBtn.addEventListener('click', () => {
     form.reset();
     editingTransactionId = null;
     submitBtn.textContent = 'Add Transaction'
-    cancelEditBtn.style.display = 'none'
+    cancelEditBtn.style.display = 'none';
 });
 
 const updateSummary = () => {
