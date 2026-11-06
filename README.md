@@ -4,7 +4,7 @@ A responsive personal expense tracker built using HTML, CSS and Vanilla JavaScri
 
 ## 🚀 Live Demo
 
-[View Live Project](expense-tracker-theta-five-26me8nlh6t.vercel.app/)
+[View Live Project](https://expense-tracker-theta-five-26me8nlh6t.vercel.app)
 
 ## 📸 Preview
 
