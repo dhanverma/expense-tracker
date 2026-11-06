@@ -4,6 +4,10 @@ A responsive Expense Tracker web application built using HTML, CSS, and Vanilla 
 
 ## 🚀 Live Demo: https://expense-tracker-theta-five-26me8nlh6t.vercel.app
 
+## Preview
+
+![Expense Tracker Screenshot](assets/expense-tracker.png)
+
 ## ✨ Features
 
 - Add income and expense transactions
