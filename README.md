@@ -1,59 +1,134 @@
-# Expense Tracker
+# 💰 React Expense Tracker
 
-A responsive personal expense tracker built using HTML, CSS and Vanilla JavaScript. Track income and expenses, manage transactions, and monitor your overall financial balance through a clean dashboard.
+A modern, responsive expense tracker built with **React and Tailwind CSS** to help users manage their finances, track income and expenses, and understand their spending habits through a clean dashboard.
 
-## 🚀 Live Demo
+## 📸 Screenshots
 
-[View Live Project](https://expense-tracker-theta-five-26me8nlh6t.vercel.app)
+### Dashboard
+![Expense Tracker Dashboard](./src/assets/dashboard.png)
 
-## 📸 Preview
-
-![Expense Tracker Screenshot](assets/expense-tracker.png)
+### Add Transaction
+![Add Transaction Modal](./src/assets/add-transaction.png)
 
 ## ✨ Features
 
-- **Dashboard Overview** – View total income, expenses and available balance.
-- **Transaction Management** – Add, edit and delete transactions.
-- **Category Filtering** – Filter transactions by category.
-- **Search Functionality** – Search transactions by description.
-- **Date-Based Sorting** – Display the newest transactions first.
-- **Data Persistence** – Save transactions using LocalStorage.
-- **Delete Confirmation** – Prevent accidental transaction deletion.
-- **Responsive Design** – Mobile-friendly layout with an interactive sidebar.
-- **Empty State** – Helpful message when no transactions are available.
+- **Dashboard Overview** – View total balance, income, expenses, and savings.
+- **Transaction Management** – Add, edit, and delete transactions.
+- **Income & Expense Tracking** – Organize transactions by their type.
+- **Search Transactions** – Quickly find transactions by title.
+- **Category Management** – Categorize transactions for better organization.
+- **Date Selection** – Assign dates to individual transactions.
+- **Dynamic Calculations** – Automatically calculate income, expenses, and balance.
+- **Local Storage** – Save transactions in the browser so data persists after refreshing.
+- **Responsive Design** – Clean dashboard layout designed for different screen sizes.
+- **Interactive UI** – Modern components, icons, modals, and dashboard sections.
 
-## 🛠️ Tech Stack
+## 🛠️ Built With
 
-- HTML5
-- CSS3
-- JavaScript (Vanilla JS)
-- Browser LocalStorage
-- Git & GitHub
-- Vercel
+- **React** – Component-based user interface.
+- **JavaScript (ES6+)** – Application logic and functionality.
+- **Tailwind CSS** – Styling and responsive layouts.
+- **Vite** – Development server and build tool.
+- **Material Symbols** – Interface icons.
+- **Local Storage API** – Client-side data persistence.
 
-## 💻 Run Locally
+## 🚀 Getting Started
+
+Follow these steps to run the project locally.
+
+### Prerequisites
+
+- Node.js
+- npm
+- Git
+
+### Installation
 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/dhanverma/expense-tracker
+   git clone https://github.com/dhanverma/react-expense-tracker.git
    ```
 
-2. Open the project folder.
+2. Navigate to the project directory:
 
-3. Open `index.html` in your browser.
+   ```bash
+   cd react-expense-tracker
+   ```
 
-No additional dependencies or installations are required.
+3. Install dependencies:
 
-## 📚 What I Learned
+   ```bash
+   npm install
+   ```
 
-- DOM manipulation and event handling.
-- JavaScript array methods (`map`, `filter`, `reduce`, `sort`).
-- Managing application state with JavaScript.
-- Working with LocalStorage.
-- Implementing search and filtering functionality.
-- Building responsive layouts.
-- Git version control and deployment using Vercel.
+4. Start the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+5. Open the local URL displayed in your terminal.
+
+### Production Build
+
+To create an optimized production build:
+
+```bash
+npm run build
+```
+
+To preview the production build locally:
+
+```bash
+npm run preview
+```
+
+## 📂 Project Structure
+
+```text
+react-expense-tracker/
+├── public/
+├── src/
+│   ├── assets/
+│   ├── components/
+│   │   ├── Dashboard.jsx
+│   │   ├── TransactionsView.jsx
+│   │   └── ...
+│   ├── App.jsx
+│   ├── main.jsx
+│   └── index.css
+├── index.html
+├── package.json
+├── vite.config.js
+└── README.md
+```
+
+*The component folder contains the reusable dashboard, navigation, transaction and summary UI components.*
+
+## 💡 What I Learned
+
+While building this project, I practiced and strengthened my understanding of:
+
+- Building reusable React components.
+- Managing application state with React Hooks.
+- Passing data and functions through props.
+- Handling controlled forms and user input.
+- Implementing CRUD operations.
+- Working with JavaScript array methods such as `map()`, `filter()`, and `reduce()`.
+- Persisting application data using Local Storage.
+- Creating responsive interfaces with Tailwind CSS.
+- Organizing a React application into reusable components.
+
+## 🔮 Future Improvements
+
+- Light and dark theme switching.
+- Interactive spending charts and analytics.
+- Monthly budgets and budget tracking.
+- Savings goals.
+- Advanced transaction filtering and sorting.
+- Export transactions to CSV.
+- Backend integration and user authentication.
 
 ## 👨‍💻 Author
 
@@ -63,4 +138,4 @@ No additional dependencies or installations are required.
 
 ---
 
-⭐ If you like this project, consider giving it a star!
+⭐ If you find this project useful, consider giving it a star!

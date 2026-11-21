@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+#searchInp{
+    color: white;
+}
+body{
+    background-color: #0c0224;
+    color: rgb(217, 215, 250);
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+    -webkit-text-fill-color: white;
+    -webkit-box-shadow: 0 0 0 1000px #1c0927 inset;
+    transition: background-color 5000s ease-in-out 0s;
+}
+input#amount:-webkit-autofill,
+input#amount:-webkit-autofill:hover,
+input#amount:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 1000px transparent inset;
+    -webkit-text-fill-color: white;
+}
